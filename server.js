@@ -11,6 +11,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true}));
 //parse incoming JSON data
 app.use(express.json());
+//makes files readily available 
+app.use(express.static('public'));
 
 function filterByQuery(query, animalsArray) {
   let personalityTraitsArray = [];
@@ -82,6 +84,19 @@ app.get('/api/animals/:id', (req, res) => {
   } else {
     res.send(404);
   }
+});
+//route the all the html/css/images/etc to the server
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
+app.get('/animals', (req, res) =>{
+  res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+app.get('/zookeepers', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+app.get('*', (req, res) =>{
+  res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.post('/api/animals', (req, res) => {
