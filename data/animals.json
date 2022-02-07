@@ -117,15 +117,6 @@
         "hungry"
       ],
       "id": "11"
-    },
-    {
-      "name": "Auska",
-      "species": "Yorkshire Terrier",
-      "diet": "carnivore",
-      "personalityTraits": [
-        "loving"
-      ],
-      "id": "12"
     }
   ]
 }
